@@ -7,10 +7,14 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { OrderComponent } from './Components/order/order.component';
 import { WishlistComponent } from './Components/wishlist/wishlist.component';
 import { CartComponent } from './Components/cart/cart.component';
-import { UserComponent } from './Components/user/user.component';
 import { AddressComponent } from './Components/address/address.component';
 import { BookComponent } from './Components/book/book.component';
 import { FeedbackComponent } from './Components/feedback/feedback.component';
+import { SignupComponent } from './Components/signup/signup.component';
+import { LoginComponent } from './Components/login/login.component';
+import { ForgotpasswordComponent } from './Components/forgotpassword/forgotpassword.component';
+import { ResetpasswordComponent } from './Components/resetpassword/resetpassword.component';
+import { DisplaybooksComponent } from './Components/displaybooks/displaybooks.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +23,14 @@ import { FeedbackComponent } from './Components/feedback/feedback.component';
     OrderComponent,
     WishlistComponent,
     CartComponent,
-    UserComponent,
     AddressComponent,
     BookComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    SignupComponent,
+    LoginComponent,
+    ForgotpasswordComponent,
+    ResetpasswordComponent,
+    DisplaybooksComponent
   ],
   imports: [
     BrowserModule,
