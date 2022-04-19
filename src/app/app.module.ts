@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './Components/dashboard/dashboard/dashboard.component';
-import { GetallbooksComponent } from './Components/getallbook/getallbooks/getallbooks.component';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { OrderComponent } from './Components/order/order.component';
 import { WishlistComponent } from './Components/wishlist/wishlist.component';
 import { CartComponent } from './Components/cart/cart.component';
@@ -17,7 +16,6 @@ import { FeedbackComponent } from './Components/feedback/feedback.component';
   declarations: [
     AppComponent,
     DashboardComponent,
-    GetallbooksComponent,
     OrderComponent,
     WishlistComponent,
     CartComponent,
