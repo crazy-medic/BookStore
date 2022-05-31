@@ -1,1 +1,194 @@
-<p>cart works!</p>
+<mat-accordion>
+    <mat-expansion-panel [expanded]="true" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                My Cart({{cartcount}})
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <div fxLayout="column" fxLayoutGap="5px">
+                    <div fxLayout="row" fxLayout="start center" *ngFor="let book of cartbooks">
+                        <div>
+                            <div fxLayoutAlign="start center">
+                                <img src="../../../assets/Image 11@2x.png">
+                            </div>
+                        </div>
+                        <div fxLayout="column" fxLayout.sm="column">
+                            <div>
+                                {{book.bookModel.bookName}}
+                            </div>
+                            <div>
+                                by {{book.bookModel.authorName}}
+                            </div>
+                            <div fxLayout="row" fxLayoutGap="10px">
+                                <div>
+                                    Rs.{{book.bookModel.discountPrice}}
+                                </div>
+                                <div>
+                                    <del> Rs.{{book.bookModel.originalPrice}} </del>
+                                </div>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                                <button mat-mini-fab (click)="negative(book)">
+                                    <span>-</span>
+                                </button>
+                                <span> {{book_qty}} </span>
+                                <button mat-mini-fab (click)="positive(book)">
+                                    <span>+</span>
+                                </button>
+                                <span (click)="removecartitem(book)">Remove</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="80%">
+                    <div fxLayoutAlign="center center">
+                        <mat-icon>place</mat-icon>
+                        <span>Use current location</span>
+                    </div>
+                    <div>
+                        <button mat-flat-button color="primary" *ngIf="step1button && disabled" (click)="setStep(1)"
+                            routerLink="/ordered" (click)="order()">Place Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="step1" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Address Details
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                <div fxLayout="column" fxLayoutGap="2px">
+                    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="40%">
+                        <span>Customer Details</span>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="20px">
+                        <div>
+                            <div>
+                                <mat-label>Full Name</mat-label>
+                            </div>
+                            <div>
+                                <mat-form-field appearance="outline">
+                                    <input matInput type="text" formControlName="fullName" placeholder="">
+                                    <mat-error>Enter full name</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <mat-label>Mobile Number</mat-label>
+                            </div>
+                            <div>
+                                <mat-form-field appearance="outline">
+                                    <input matInput type="text" formControlName="phone" placeholder="">
+                                    <mat-error>Enter mobile number</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxLayout="column">
+                        <div>
+                            <mat-label>Address</mat-label>
+                        </div>
+                        <div>
+                            <mat-form-field>
+                                <textarea matInput type="text" formControlName="address" placeholder=""></textarea>
+                                <mat-error>Enter address</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <div>
+                            <div>
+                                <mat-label>City/Town</mat-label>
+                            </div>
+                            <div>
+
+                                <mat-form-field appearance="outline">
+                                    <input matInput type="text" formControlName="city" placeholder="">
+                                    <mat-error>Enter city</mat-error>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <mat-label>State</mat-label>
+                            </div>
+                            <div>
+                                <mat-form-field appearance="outline">
+                                    <input matInput type="text" formControlName="state" placeholder="">
+                                    <mat-error>Enter state</mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxLayout="column" fxLayoutGap="7px">
+                        <span>Type</span>
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button value="1">home</mat-radio-button>
+                            <mat-radio-button value="2">work</mat-radio-button>
+                            <mat-radio-button value="3">other</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="50%">
+                    <div fxLayoutAlign="center center">
+                        <span>Add New Address</span>
+                    </div>
+                    <div>
+                        <button mat-flat-button class="continuebutton" color="primary" (click)="setStep(2)"
+                            *ngIf="step2button">Continue</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="step2" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Order Summary
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <div fxLayout="column" fxLayoutGap="20px">
+                    <div fxLayout="row" fxLayout="start center" *ngFor="let book of cartbooks">
+                        <div>
+                            <div fxLayoutAlign="start center">
+                                <img src="../../../assets/Image 11@2x.png">
+                            </div>
+                        </div>
+                        <div fxLayout="column" fxLayout.sm="column">
+                            <div>
+                                {{book.bookModel.bookName}}
+                            </div>
+                            <div>
+                                Author: {{book.bookModel.authorName}}
+                            </div>
+                            <div fxLayout="row" fxLayoutGap="10px">
+                                <div class="discountprice">
+                                    Rs Rs.{{book.bookModel.discountPrice}}
+                                </div>
+                                <div>
+                                    <del> Rs.{{book.bookModel.originalPrice}} </del>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="space-between center">
+                    <div>
+                        <button mat-flat-button (click)="ordersummary()" color="primary">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

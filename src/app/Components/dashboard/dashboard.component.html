@@ -1,1 +1,34 @@
-<p>dashboard works!</p>
+<div style="width: 100%; height: 100%;">
+  <mat-toolbar class="tool" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="titleText" fxLayout="row" fxLayoutGap="2%">
+      <img src="../../../assets/Book.png" />
+      <a style="color: white;">BookStore</a>
+    </div>
+    <mat-card class="search-mat-card" fxLayout="row" fxLayoutAlign="space-around center">
+      <button mat-icon-button>
+        <mat-icon class="search">search</mat-icon>
+      </button>
+      <input class="searchInput" type="text" name="search" placeholder="Search a book" #search
+        (keyup)="clearFilter(search.value)" />
+    </mat-card>
+    <button class="cart" mat-icon-button [routerLink]="['/cart']" matTooltip="Cart">Cart<mat-icon>shopping_cart</mat-icon>
+    </button>
+    <button class="Menu" class="pro" mat-button [matMenuTriggerFor]="menu">Profile
+      <mat-icon class="searchIcon">perm_identity</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <div style="text-align:center">
+        <button mat-button class="Orders" (click)="orders()">My Orders</button>
+        <div style="text-align:center">
+          <button mat-button class="Orders" (click)=" wishlist()">Wishlist</button>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>
+        <div style="text-align:center">
+          <button mat-button class="login" (click)="Logout()">Logout</button>
+        </div>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+  <router-outlet></router-outlet>

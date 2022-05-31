@@ -11,7 +11,6 @@ import { AddressComponent } from './Components/address/address.component';
 import { BookComponent } from './Components/book/book.component';
 import { FeedbackComponent } from './Components/feedback/feedback.component';
 import { SignupComponent } from './Components/signup/signup.component';
-import { LoginComponent } from './Components/login/login.component';
 import { ForgotpasswordComponent } from './Components/forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './Components/resetpassword/resetpassword.component';
 import { DisplaybooksComponent } from './Components/displaybooks/displaybooks.component';
@@ -34,6 +33,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatExpansionModule } from '@angular/material/expansion';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,6 @@ import { MatMenuModule } from '@angular/material/menu';
     BookComponent,
     FeedbackComponent,
     SignupComponent,
-    LoginComponent,
     ForgotpasswordComponent,
     ResetpasswordComponent,
     DisplaybooksComponent,
@@ -54,7 +54,7 @@ import { MatMenuModule } from '@angular/material/menu';
   imports: [
     BrowserModule, MatInputModule, MatCheckboxModule, MatGridListModule, FormsModule, MatIconModule, MatDialogModule,
     AppRoutingModule, ReactiveFormsModule, HttpClientModule, MatSidenavModule, MatToolbarModule, MatListModule, MatMenuModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule, MatExpansionModule,MatRadioModule,
     MatFormFieldModule,
     FlexLayoutModule,
     MatButtonModule,
